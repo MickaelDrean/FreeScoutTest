@@ -9,6 +9,8 @@ services:
       - .env
     ports:
       - "8080:80"
+    volumes:
+      - freescout-data:/www/html
 
   db:
     image: mariadb:10.6
@@ -19,3 +21,6 @@ services:
       MYSQL_DATABASE: freescout
       MYSQL_USER: freescout
       MYSQL_PASSWORD: freescout
+
+volumes:
+  freescout-data:

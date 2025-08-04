@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  freescout:
+    image: tiredofit/freescout
+    container_name: freescout
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: freescout
+      DB_USER: freescout
+      DB_PASSWORD: freescout
+      SITE_URL: http://localhost:8080
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASS: Admin1234
+    ports:
+      - "8080:80"
+
+  db:
+    image: mariadb:10.6
+    container_name: freescout-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: freescout
+      MYSQL_USER: freescout
+      MYSQL_PASSWORD: freescout
